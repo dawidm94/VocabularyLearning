@@ -1,0 +1,55 @@
+/* MENU LIST */
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #204a87;
+}
+li.navbar {
+    float: left;
+}
+
+li.navbar a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li.navbar a:hover:not(.navbaractive) {
+    background-color: #92a8d1;
+}
+
+.navbaractive {
+    background-color: #92a8d1;
+}
+
+/* ADMIN MENU LIST */
+ul.navbarAdmin {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #a40000;
+}
+li.navbarAdmin {
+    float: left;
+}
+
+li.navbarAdmin a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li.navbarAdmin a:hover:not(.adminnavbaractive) {
+    background-color: #d98e8e;
+}
+
+.adminnavbaractive {
+    background-color: #d98e8e;
+}
