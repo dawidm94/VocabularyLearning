@@ -1,4 +1,4 @@
-package pl.coderslab.models;
+package pl.coderslab.config;
 
 import java.util.Locale;
 
@@ -22,6 +22,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import pl.coderslab.models.WordGroupConverter;
 
 @Configuration
 @EnableWebMvc

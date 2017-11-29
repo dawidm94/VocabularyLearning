@@ -3,13 +3,15 @@ package pl.coderslab.models;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 
+import pl.coderslab.repositories.WordGroupRepository;
+
 public class WordGroupConverter implements Converter<String, WordGroup>{
 
 	@Autowired
-	private WordGroupDao wordGroupDao;
+	WordGroupRepository wordGroupRepository;
 	
 	public WordGroup convert(String source) {
-		WordGroup wordGroup = wordGroupDao.findById(Long.parseLong(source));
+		WordGroup wordGroup = wordGroupRepository.findOne(Long.parseLong(source));
 		return wordGroup;
 	}
 	

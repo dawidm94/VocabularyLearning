@@ -51,14 +51,17 @@ public class WordController {
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addWord(@ModelAttribute Word word) {
+	public String addWord(@ModelAttribute Word word, Model model) {
 		wordRepository.save(word);
 		List<User> users = userRepository.findAll();
 		for( User user: users) {
 			Probability probability = new Probability(user, word, 1);
 			probabilityRepository.save(probability);
 		}
-		return "redirect:/admin";
+		model.addAttribute("addedWord", word);
+		word = new Word();
+		model.addAttribute("word", word);
+		return "addWordForm";
 	}
 	
 	@RequestMapping("/editlist")
@@ -80,7 +83,7 @@ public class WordController {
 		wordToUpdate.setPl(word.getPl());
 		wordToUpdate.setWordGroup(word.getWordGroup());
 		wordRepository.save(wordToUpdate);
-		return "redirect:/admin";
+		return "redirect:/admin/word/editlist";
 	}
 	
 	@RequestMapping("/delete")
@@ -97,6 +100,6 @@ public class WordController {
 	public String delete(@PathVariable long id) {
 		Word word = wordRepository.findOne(id);
 		wordRepository.delete(word);
-		return "redirect:/admin";
+		return "redirect:/admin/word/delete";
 	}
 }

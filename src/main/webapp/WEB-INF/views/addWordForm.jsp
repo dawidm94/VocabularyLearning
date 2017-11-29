@@ -22,5 +22,11 @@
 </form:form>
 <hr>
 </div>
+	<c:if test="${ not empty addedWord.pl}"> 
+		<p style="color: green; font-weight:bold; text-indent: 610px">Added </p>
+		<p style="color: green; text-indent: 540px">PL: <font color="black"><b>${addedWord.pl}</b></font></p> 
+		<p style="color: green; text-indent: 540px">ENG: <font color="black"><b>${addedWord.eng}</b></font> </p>
+		<p style="color: green; text-indent: 540px">Word Group: <font color="black"><b>${addedWord.wordGroup.name}</b></font></p>
+	</c:if>
 </body>
 </html>

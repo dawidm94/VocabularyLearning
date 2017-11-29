@@ -1,31 +1,3 @@
-/* MENU LIST */
-ul.navbar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #204a87;
-}
-li.navbar {
-    float: left;
-}
-
-li.navbar a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li.navbar a:hover:not(.navbaractive) {
-    background-color: #92a8d1;
-}
-
-.navbaractive {
-    background-color: #92a8d1;
-}
-
 /* ADMIN MENU LIST */
 ul.navbarAdmin {
     list-style-type: none;
@@ -52,4 +24,32 @@ li.navbarAdmin a:hover:not(.adminnavbaractive) {
 
 .adminnavbaractive {
     background-color: #d98e8e;
+}
+
+/* CARDS */
+
+.card2 {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    border-radius: 5px;
+    border-color: blue;
+}
+
+.card2:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img#category {
+    border-radius: 5px 5px 0 0;
+}
+
+.container2 {
+    padding: 2px 16px;
+}
+
+table#categories
+{
+    border-collapse:separate;
+    border-spacing:0 20px;
 }

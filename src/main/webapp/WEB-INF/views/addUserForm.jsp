@@ -22,5 +22,11 @@
 </form:form>
 <hr>
 </div>
+	<c:if test="${ not empty addedUser.login}"> 
+		<p style="color: green; font-weight:bold; text-indent: 610px">Added </p>
+		<p style="color: green; text-indent: 540px">login: <font color="black"><b>${addedUser.login}</b></font></p> 
+		<p style="color: green; text-indent: 540px">password: <font color="black"><b>*********</b></font> </p>
+		<p style="color: green; text-indent: 540px">e-mail: <font color="black"><b>${addedUser.email}</b></font></p>
+	</c:if>
 </body>
 </html>

@@ -19,7 +19,7 @@ public class WordGroup {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@OneToMany(mappedBy = "wordGroup",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "wordGroup",cascade = CascadeType.REMOVE)
 	private List<Word> words = new ArrayList<Word>();
 	@Column(unique = true)
 	private String name;

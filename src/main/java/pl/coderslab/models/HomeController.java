@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class MainController {
+public class HomeController {
 
 	@RequestMapping("/test")
 	public String hello() {
@@ -33,6 +33,21 @@ public class MainController {
 	public String logout(HttpSession session) {
 		session.removeAttribute("login");
 		return "redirect:./";
+	}
+	
+	@RequestMapping("/admin")
+	public String adminPanel() {
+		return "adminPanel";
+	}
+	
+	@RequestMapping("/categories")
+	public String selectTypeofCategory() {
+		return "categoryTypeSelect";
+	}
+	
+	@RequestMapping("/categories/basic")
+	public String basicCategories() {
+		return "categoriesBasic";
 	}
 
 }

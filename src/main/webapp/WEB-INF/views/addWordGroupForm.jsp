@@ -20,5 +20,9 @@
 </form:form>
 <hr>
 </div>
+	<c:if test="${ not empty addedWordGroup.name}"> 
+		<p style="color: green; font-weight:bold; text-indent: 610px">Added </p>
+		<p style="color: green; text-indent: 580px">Name: <font color="black"><b>${addedWordGroup.name}</b></font></p> 
+	</c:if>	
 </body>
 </html>

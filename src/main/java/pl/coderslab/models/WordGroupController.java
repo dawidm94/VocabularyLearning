@@ -32,9 +32,12 @@ public class WordGroupController {
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addWord(@ModelAttribute WordGroup wordGroup) {
+	public String addWord(@ModelAttribute WordGroup wordGroup, Model model) {
 		wordGroupRepository.save(wordGroup);
-		return "redirect:/admin";
+		model.addAttribute("addedWordGroup", wordGroup);
+		wordGroup = new WordGroup();
+		model.addAttribute("wordGroup", wordGroup);
+		return "addWordGroupForm";
 	}
 
 	@RequestMapping("/editlist")
@@ -54,7 +57,7 @@ public class WordGroupController {
 		WordGroup wordGroupToUpdate = wordGroupRepository.findOne(id);
 		wordGroupToUpdate.setName(wordGroup.getName());
 		wordGroupRepository.save(wordGroupToUpdate);
-		return "redirect:/admin";
+		return "redirect:/admin/wordGroup/editlist";
 	}
 	
 	@RequestMapping("/delete")
@@ -71,6 +74,6 @@ public class WordGroupController {
 	public String delete(@PathVariable long id) {
 		WordGroup wordGroup = wordGroupRepository.findOne(id);
 		wordGroupRepository.delete(wordGroup);
-		return "redirect:/admin";
+		return "redirect:/wordGroup/delete";
 	}
 }

@@ -38,14 +38,17 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addUser(@ModelAttribute User user) {
+	public String addUser(@ModelAttribute User user, Model model) {
 		userRepository.save(user);
 		List<Word> words = wordRepository.findAll();
 		for(Word word: words) {
 			Probability probability = new Probability(user, word, 1);
 			probabilityRepository.save(probability);
 		}
-		return "redirect:/admin";
+		model.addAttribute("addedUser", user);
+		user = new User();
+		model.addAttribute("user", user);
+		return "addUserForm";
 	}
 	
 	@RequestMapping("/editlist")
@@ -67,7 +70,7 @@ public class UserController {
 		userToUpdate.setPassword(user.getPassword());
 		userToUpdate.setEmail(user.getEmail());
 		userRepository.save(userToUpdate);
-		return "redirect:/admin";
+		return "redirect:/admin/user/editlist";
 	}
 	
 	@RequestMapping("/delete")
@@ -84,6 +87,6 @@ public class UserController {
 	public String delete(@PathVariable long id) {
 		User user = userRepository.findOne(id);
 		userRepository.delete(user);
-		return "redirect:/admin";
+		return "redirect:/admin/user/delete";
 	}
 }

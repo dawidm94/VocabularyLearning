@@ -1,4 +1,4 @@
-package pl.coderslab.models;
+package pl.coderslab.config;
 
 import java.util.EnumSet;
 
