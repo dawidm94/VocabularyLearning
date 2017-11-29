@@ -1,10 +1,15 @@
 package pl.coderslab.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +24,8 @@ public class User {
 	private String password;
 	@Column(unique = true)
 	private String email;
+	@OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)
+	private List<Probability> probabilities= new ArrayList<Probability>();
 
 	public User(String login, String password, String email) {
 		this.login = login;

@@ -21,13 +21,13 @@
 		<th width="22%">Word group</th>
 		<th width="14%"></th>
 	</tr>
-	<c:forEach items="${words}" var="word" begin="0" varStatus="theCount">
+	<c:forEach items="${words}" var="word" begin="1" varStatus="theCount">
 	<tr>
-		<td>${theCount.index+1}</td>
+		<td>${theCount.index}</td>
 		<td>${word.pl}</td>
 		<td>${word.eng}</td>
 		<td>${word.wordGroup.name}</td>
-		<td><a style="width: 180px;height: 20px;" href="./edit/${word.id}" class="badge badge-primary">Edit</a></td>
+		<td><a style="width: 180px;height: 20px;" href="./delete/${word.id}" class="badge badge-danger">Delete</a></td>
 	</tr>
 	</c:forEach>
 </table>

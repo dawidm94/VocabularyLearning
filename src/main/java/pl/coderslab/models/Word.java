@@ -1,10 +1,16 @@
 package pl.coderslab.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +24,8 @@ public class Word {
 	private String eng;
 	@ManyToOne
 	private WordGroup wordGroup;
+	@OneToMany(mappedBy = "word", cascade = CascadeType.REMOVE)
+	private List<Probability> probabilities= new ArrayList<Probability>();
 
 	public Word(String pl, String eng, WordGroup wordGroup) {
 		this.pl = pl;

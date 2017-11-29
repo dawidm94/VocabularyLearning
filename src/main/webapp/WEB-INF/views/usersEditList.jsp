@@ -21,10 +21,10 @@
 		<th width="20%">E-mail</th>
 		<th width="28%"></th>
 	</tr>
-	<c:forEach items="${users}" var="user" begin="1" varStatus="theCount">
+	<c:forEach items="${users}" var="user" begin="0" varStatus="theCount">
 	<tr>
 		<td></td>
-		<td>${theCount.index}</td>
+		<td>${theCount.index+1}</td>
 		<td>${user.login}</td>
 		<td>${user.email}</td>
 		<td><a style="width: 180px;height: 20px;" href="./edit/${user.id}" class="badge badge-primary">Edit</a></td>

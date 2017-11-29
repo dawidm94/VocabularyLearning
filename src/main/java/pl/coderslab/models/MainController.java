@@ -1,14 +1,10 @@
-package pl.coderslab.controllers;
+package pl.coderslab.models;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import pl.coderslab.models.User;
-import pl.coderslab.models.UserDao;
 
 @Controller
 public class MainController {

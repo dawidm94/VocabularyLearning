@@ -11,16 +11,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 align="center"><strong>Add word</strong></h1>
-<hr>
-<div align="center">
-<form:form method="post" modelAttribute="word">
-	PL: <form:input path="pl"/>
-	ENG: <form:input path="eng"/>
-	Word Group: <form:select path="wordGroup" items="${groups}" itemValue="id" itemLabel="name"/>
-	<input type="submit">
-</form:form>
-<hr>
-</div>
+	<form:form method="post" modelAttribute="wordGroup">
+		Name: <form:input path="name"/>
+		<input type="submit" value="add">
+	</form:form>	
 </body>
 </html>

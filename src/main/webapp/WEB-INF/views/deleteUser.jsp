@@ -10,24 +10,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 align="center"><strong>Edit Word</strong></h1>
+<h1 align="center"><strong>Delete User</strong></h1>
 <hr>
 <div align="center">
 <table class="table table-striped">
 	<tr>
+		<th width="22%"></th>
 		<th width="10%">No.</th>
-		<th width="20%">PL</th>
-		<th width="20%">ENG</th>
-		<th width="22%">Word group</th>
-		<th width="14%"></th>
+		<th width="20%">Login</th>
+		<th width="20%">E-mail</th>
+		<th width="28%"></th>
 	</tr>
-	<c:forEach items="${words}" var="word" begin="0" varStatus="theCount">
+	<c:forEach items="${users}" var="user" begin="1" varStatus="theCount">
 	<tr>
-		<td>${theCount.index+1}</td>
-		<td>${word.pl}</td>
-		<td>${word.eng}</td>
-		<td>${word.wordGroup.name}</td>
-		<td><a style="width: 180px;height: 20px;" href="./edit/${word.id}" class="badge badge-primary">Edit</a></td>
+		<td></td>
+		<td>${theCount.index}</td>
+		<td>${user.login}</td>
+		<td>${user.email}</td>
+		<td><a style="width: 180px;height: 20px;" href="./delete/${user.id}" class="badge badge-danger">Delete</a></td>
 	</tr>
 	</c:forEach>
 </table>
