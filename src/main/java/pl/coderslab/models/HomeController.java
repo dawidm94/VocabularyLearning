@@ -1,7 +1,6 @@
 package pl.coderslab.models;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -15,16 +14,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.coderslab.repositories.UserRepository;
+import pl.coderslab.repositories.WordGroupRepository;
 import pl.coderslab.repositories.WordRepository;
 
 @Controller
 public class HomeController {
-
+	
 	@Autowired
 	UserRepository userRepository;
 	
 	@Autowired
 	WordRepository wordRepository;
+	
+	@Autowired
+	WordGroupRepository wordGroupRepository;
 	
 	@RequestMapping("/test")
 	public String hello() {
@@ -32,11 +35,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/")
-	public String loginRegister(HttpSession session) {
+	public String loginRegister(HttpSession session, Model model) {
 		if(session.getAttribute("user_id")!=null) {
 			return "index";
 		}else {
-		return "loginRegister";
+			User user = new User();
+			model.addAttribute("user",user);
+			return "loginRegister";
 		}
 	}
 	
@@ -44,12 +49,14 @@ public class HomeController {
 	public String login(@RequestParam String login, @RequestParam String password, HttpSession session) {
 		User user = userRepository.findByLogin(login);
 		session.setAttribute("user_id", user.getId());
+		session.setAttribute("user_permission", user.getPermission());
 		return "redirect:./";
 	}
 	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("user_id");
+		session.removeAttribute("user_permission");
 		return "redirect:./";
 	}
 	
@@ -63,6 +70,7 @@ public class HomeController {
 		int randomWordsNumber = 10;
 		List<Word> words = wordRepository.findAll();
 		List<Word> randomWords = new ArrayList<Word>();
+		@SuppressWarnings("unused")
 		Random random = new Random();
 		Collections.shuffle(words);
 		for(int i=0; i<randomWordsNumber; i++) {
@@ -83,8 +91,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/categories/users")
-	public String usersCategories() {
-		return "categoriesBasic";
+	public String usersCategories(Model model) {
+		List<WordGroup> usersCategories = wordGroupRepository.findByNoBasicWordGroup();
+		model.addAttribute("userCategories", usersCategories);
+		return "categoriesUser";
 	}
-
+	
 }

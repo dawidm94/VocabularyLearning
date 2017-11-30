@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import pl.coderslab.repositories.UserRepository;
 import pl.coderslab.repositories.WordGroupRepository;
@@ -56,6 +57,15 @@ public class WordGroupController {
 		return "wordGroupsEditList";
 	}
 	
+	@RequestMapping("/basic/{id}")
+	@ResponseBody
+	public String ifBasicTrue(@PathVariable long id) {
+		WordGroup wordGroup = wordGroupRepository.findOne(id);
+		wordGroup.setIfBasicGroup(false);
+		wordGroupRepository.save(wordGroup);
+		return "dodalem";
+	}
+	
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editWordGroupForm(Model model, @PathVariable long id) {
 		WordGroup wordGroup = wordGroupRepository.findOne(id);
@@ -87,4 +97,5 @@ public class WordGroupController {
 		wordGroupRepository.delete(wordGroup);
 		return "redirect:/admin/wordGroup/delete";
 	}
+	
 }

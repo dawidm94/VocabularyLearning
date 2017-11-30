@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    <%@ page isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,16 +28,17 @@
 	</form>
 </div>
 
-
+<c:url var="addUrl" value="/admin/user/add"/>
 <!-- REGISTER -->
 <div class="register" style="display:none;">
-	<form method="post" action="./users/save">
-		Login: <input type="text" name="login"><br/>
-		E-mail: <input type="email" name="email"><br/>
-		Password: <input type="password" name="password"><br/>
-		Confirm password: <input type="password" name="password2"><br/>
-		<input type="submit">
-	</form>
+	<form:form action="${addUrl}" method="post" modelAttribute="user">
+		Login: <form:input path="login"/> <br/>
+		E-mail: <form:input path="email"/> <br/>
+		Password: <form:input path="password"/> <br/>
+		Confirm password<input type="password" name="passwordVerify"/> <br/>
+		<form:hidden path="permission" value="user"/>
+		<input type="submit" value="add">
+	</form:form>
 </div>
 
 

@@ -28,6 +28,7 @@ public class User {
 	private List<Probability> probabilities= new ArrayList<Probability>();
 	@OneToMany(mappedBy = "user")
 	private List<WordGroup> wordGroups = new ArrayList<WordGroup>();
+	private String permission;
 
 	public User(String login, String password, String email) {
 		this.login = login;
@@ -64,6 +65,14 @@ public class User {
 
 	public long getId() {
 		return id;
+	}
+
+	public String getPermission() {
+		return permission;
+	}
+
+	public void setPermission(String permissions) {
+		this.permission = permissions;
 	}
 
 }

@@ -18,6 +18,10 @@
 	Login: <form:input path="login"/>
 	Password: <form:input path="password"/>
 	E-mail: <form:input path="email"/> 
+	Permission: <form:select path="permission">
+					<form:option value="user">user</form:option>
+					<form:option value="admin">admin</form:option>
+				</form:select>
 	<input type="submit" value="add">
 </form:form>
 <hr>

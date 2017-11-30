@@ -2,6 +2,9 @@ package pl.coderslab.models;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,17 +41,29 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addUser(@ModelAttribute User user, Model model) {
+	public String addUser(@ModelAttribute User user, Model model, HttpSession session) {
+		String password = user.getPassword();
+		String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+		user.setPassword(hashedPassword);
 		userRepository.save(user);
 		List<Word> words = wordRepository.findAll();
 		for(Word word: words) {
 			Probability probability = new Probability(user, word, 1);
 			probabilityRepository.save(probability);
 		}
-		model.addAttribute("addedUser", user);
-		user = new User();
-		model.addAttribute("user", user);
-		return "addUserForm";
+		
+		if(session.getAttribute("user_id")!=null) {
+			model.addAttribute("addedUser", user);
+			user = new User();
+			model.addAttribute("user", user);
+			return "addUserForm";
+		}else {
+			session.setAttribute("user_id", user.getId());
+			session.setAttribute("user_permission", user.getPermission());
+			String message = "Witaj " + user.getLogin() + "! Twoja rejestracja przebiegła pomyślnie.";
+			model.addAttribute("message", message);
+			return "index";
+		}	
 	}
 	
 	@RequestMapping("/editlist")
@@ -89,4 +104,5 @@ public class UserController {
 		userRepository.delete(user);
 		return "redirect:/admin/user/delete";
 	}
+
 }

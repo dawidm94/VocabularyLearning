@@ -26,6 +26,7 @@ public class WordGroup {
 	private String name;
 	@ManyToOne
 	private User user;
+	private boolean ifBasicGroup;
 
 	public User getUser() {
 		return user;
@@ -60,6 +61,14 @@ public class WordGroup {
 
 	public void setWords(List<Word> words) {
 		this.words = words;
+	}
+
+	public boolean isIfBasicGroup() {
+		return ifBasicGroup;
+	}
+
+	public void setIfBasicGroup(boolean ifBasicGroup) {
+		this.ifBasicGroup = ifBasicGroup;
 	}
 
 }
