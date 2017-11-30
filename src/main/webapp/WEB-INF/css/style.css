@@ -53,3 +53,28 @@ table#categories
     border-collapse:separate;
     border-spacing:0 20px;
 }
+
+/* RANDOM TABLE */
+
+#random {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 40%;
+}
+
+#random td, #random th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#random tr:nth-child(even){background-color: #f2f2f2;}
+
+#random tr:hover {background-color: #ddd;}
+
+#random th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #428BCA;
+    color: white;
+}

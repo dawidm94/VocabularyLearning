@@ -8,6 +8,11 @@
 <title>Vocabulary Learning - home</title>
 </head>
 <body>
-Glowna strona po zalogowaniu :-)
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Vocabulary Learning</h1>
+    <p class="lead">Welcome to Vocabulary Learning page. That project was created by Dawid Marcinków as a final project from Java Web Developer Course in Coderslab.</p>
+  </div>
+</div>
 </body>
 </html>

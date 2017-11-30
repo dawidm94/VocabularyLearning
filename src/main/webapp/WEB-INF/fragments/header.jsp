@@ -23,7 +23,7 @@
 				</li>
 				<li class="nav-item"><a class="nav-link" href="<c:url value="/categories"/>"><strong>Categories</strong></a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="<c:url value="."/>"><strong>Random 10</strong></a>
+				<li class="nav-item"><a class="nav-link" href="<c:url value="/random"/>"><strong>Random 10</strong></a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="<c:url value="."/>"><strong>Link</strong></a>
 				</li>

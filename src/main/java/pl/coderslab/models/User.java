@@ -26,6 +26,8 @@ public class User {
 	private String email;
 	@OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)
 	private List<Probability> probabilities= new ArrayList<Probability>();
+	@OneToMany(mappedBy = "user")
+	private List<WordGroup> wordGroups = new ArrayList<WordGroup>();
 
 	public User(String login, String password, String email) {
 		this.login = login;

@@ -2,6 +2,8 @@ package pl.coderslab.models;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pl.coderslab.repositories.UserRepository;
 import pl.coderslab.repositories.WordGroupRepository;
 
 @Controller
@@ -18,6 +21,9 @@ public class WordGroupController {
 	
 	@Autowired
 	WordGroupRepository wordGroupRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 
 	@ModelAttribute(name = "groups")
 	public List<WordGroup> getGroups(){
@@ -32,7 +38,12 @@ public class WordGroupController {
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addWord(@ModelAttribute WordGroup wordGroup, Model model) {
+	public String addWord(@ModelAttribute WordGroup wordGroup, Model model, HttpSession session) {
+		User user = userRepository.findOne((Long) session.getAttribute("user_id"));
+		System.out.println(user.getEmail() + "email");
+		System.out.println(user.getLogin() + "login");
+		System.out.println(user.getId() + "id");
+		wordGroup.setUser(user);
 		wordGroupRepository.save(wordGroup);
 		model.addAttribute("addedWordGroup", wordGroup);
 		wordGroup = new WordGroup();
@@ -74,6 +85,6 @@ public class WordGroupController {
 	public String delete(@PathVariable long id) {
 		WordGroup wordGroup = wordGroupRepository.findOne(id);
 		wordGroupRepository.delete(wordGroup);
-		return "redirect:/wordGroup/delete";
+		return "redirect:/admin/wordGroup/delete";
 	}
 }
