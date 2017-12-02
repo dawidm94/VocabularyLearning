@@ -30,7 +30,9 @@ public class HomeController {
 	WordGroupRepository wordGroupRepository;
 	
 	@RequestMapping("/test")
-	public String hello() {
+	public String hello(Model model) {
+		User user = new User();
+		model.addAttribute("user",user);
 		return "login";
 	}
 	
@@ -80,21 +82,13 @@ public class HomeController {
 		return "random10";
 	}
 	
-	@RequestMapping("/categories")
-	public String selectTypeofCategory() {
-		return "categoryTypeSelect";
+	@RequestMapping("/profile")
+	public String showProfile(HttpSession session, Model model) {
+		long userId = (Long) session.getAttribute("user_id");
+		User user = userRepository.findOne(userId);
+		List<WordGroup> userWordGroups = wordGroupRepository.findNoBasicWordGroupByUserId(userId);
+		model.addAttribute("user", user);
+		model.addAttribute("wordGroups", userWordGroups);
+		return "profile";
 	}
-	
-	@RequestMapping("/categories/basic")
-	public String basicCategories() {
-		return "categoriesBasic";
-	}
-	
-	@RequestMapping("/categories/users")
-	public String usersCategories(Model model) {
-		List<WordGroup> usersCategories = wordGroupRepository.findByNoBasicWordGroup();
-		model.addAttribute("userCategories", usersCategories);
-		return "categoriesUser";
-	}
-	
 }

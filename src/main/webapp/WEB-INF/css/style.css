@@ -78,3 +78,7 @@ table#categories
     background-color: #428BCA;
     color: white;
 }
+
+.profile td{
+	padding: 20px
+}

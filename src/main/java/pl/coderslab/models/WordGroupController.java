@@ -1,5 +1,6 @@
 package pl.coderslab.models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -41,9 +42,9 @@ public class WordGroupController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addWord(@ModelAttribute WordGroup wordGroup, Model model, HttpSession session) {
 		User user = userRepository.findOne((Long) session.getAttribute("user_id"));
-		System.out.println(user.getEmail() + "email");
-		System.out.println(user.getLogin() + "login");
-		System.out.println(user.getId() + "id");
+		Date date = new Date();
+		wordGroup.setCreated(date);
+		wordGroup.setLastUpdate(date);
 		wordGroup.setUser(user);
 		wordGroupRepository.save(wordGroup);
 		model.addAttribute("addedWordGroup", wordGroup);

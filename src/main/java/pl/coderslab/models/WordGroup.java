@@ -1,6 +1,7 @@
 package pl.coderslab.models;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "word_groups")
@@ -27,6 +30,12 @@ public class WordGroup {
 	@ManyToOne
 	private User user;
 	private boolean ifBasicGroup;
+	@Column
+	@Type(type="date")
+	private Date created;
+	@Column
+	@Type(type="timestamp")
+	private Date lastUpdate;
 
 	public User getUser() {
 		return user;
@@ -69,6 +78,22 @@ public class WordGroup {
 
 	public void setIfBasicGroup(boolean ifBasicGroup) {
 		this.ifBasicGroup = ifBasicGroup;
+	}
+
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
+	public Date getLastUpdate() {
+		return lastUpdate;
+	}
+
+	public void setLastUpdate(Date date) {
+		this.lastUpdate = date;
 	}
 
 }

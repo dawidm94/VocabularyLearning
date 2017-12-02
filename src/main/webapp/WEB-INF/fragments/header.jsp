@@ -9,13 +9,11 @@
 	crossorigin="anonymous">
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<span class="navbar-brand mb-0 h1"><strong>Vocabulary
-				Learning</strong></span>
+		<span class="navbar-brand mb-0 h1"><a style="color:white; text-decoration: none;" href="<c:url value="/"/>"><strong>Vocabulary
+				Learning</strong></a></span>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="<c:url value="/"/>"><strong>Home</strong></a>
-				</li>
 				<li class="nav-item"><a class="nav-link" href="<c:url value="/categories"/>"><strong>Categories</strong></a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="<c:url value="/random"/>"><strong>Random 10</strong></a>
@@ -24,7 +22,7 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="<c:url value="/"/>"><strong>Profile</strong></a>
+				<li class="nav-item"><a class="nav-link" href="<c:url value="/profile"/>"><strong>Profile</strong></a>
 				</li>
 
 				<%-- Check if admin --%>
@@ -33,7 +31,7 @@
 				</li>
 				</c:if>
 				
-				<li class="nav-item"><a class="nav-link" href="<c:url value="logout"/>"><strong>Logout</strong></a>
+				<li class="nav-item"><a class="nav-link" href="<c:url value="/logout"/>"><strong>Logout</strong></a>
 				</li>
 			</ul>
 		</div>

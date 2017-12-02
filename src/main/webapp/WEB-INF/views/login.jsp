@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    <%@ page isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,7 +24,7 @@
      <ul class="nav navbar-nav navbar-right">
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     	<span class="navbar-text">Log in</span>
-    	<form id="signin" class="navbar-form navbar-right" role="form" method="post" action="AAAAAAAA">
+    	<form id="signin" class="navbar-form navbar-right" role="form" method="post" action="./login">
           <div class="input-group">
           	<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
              <input id="basic-addon2" type="text" class="form-control" name="login" value="" placeholder="Login">                                        
@@ -41,18 +44,17 @@
 <div class="container" >
     <div class="col-md-6" >
         <div id="logbox"  >
-            <form id="signup" method="post" action="/signup" >
+            <form:form id="signup" method="post" action="/signup" modelAttribute="user">
                 <h1>Create an Account</h1>
-				<input name="user[email]" type="email" placeholder="Email address" class="input pass"/>
-				<input name="user[login]" type="text" placeholder="Login" class="input pass"/>
-                <input name="user[password]" type="password" placeholder="Choose a password" required="required" class="input pass"/>
+				<form:input path="login" placeholder="Email address" class="input pass"/>
+				<form:input path="email" placeholder="Login" class="input pass"/>
+                <form:input path="password" type="password" placeholder="Choose a password" required="required" class="input pass"/>
                 <input name="user[password2]" type="password" placeholder="Confirm password" required="required" class="input pass"/>
                 <input type="submit" value="Sign me up!" class="inputButton"/>
-            </form>
+            </form:form>
         </div>
     </div>
 </div>
 </div>
-
 </body>
 </html>
