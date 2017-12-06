@@ -29,7 +29,7 @@
     		<td><strong><a href="<c:url value="/categories/user/${category.id}"/>" style="color:#0000EE;">${category.name}</a></strong></td>
     		<td>${category.user.login}</td>
     		<td>${category.created}</td>
-    		<td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value = "${category.lastUpdate}" /></td>
+    		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value = "${category.lastUpdate}" /></td>
     		<td><a href="<c:url value="/categories/user/${category.id}"/>"><span class="badge badge-primary">Show details</span></a>
  	   </tr>
    		 </c:forEach>

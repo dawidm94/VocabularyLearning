@@ -23,7 +23,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import pl.coderslab.models.WordGroupConverter;
+import pl.coderslab.converters.WordGroupConverter;
 
 @Configuration
 @EnableWebMvc

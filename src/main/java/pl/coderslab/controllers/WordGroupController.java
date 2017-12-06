@@ -1,4 +1,4 @@
-package pl.coderslab.models;
+package pl.coderslab.controllers;
 
 import java.util.Date;
 import java.util.List;
@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import pl.coderslab.entities.User;
+import pl.coderslab.entities.WordGroup;
 import pl.coderslab.repositories.UserRepository;
 import pl.coderslab.repositories.WordGroupRepository;
 
@@ -78,6 +80,7 @@ public class WordGroupController {
 	public String editWordGroup(@ModelAttribute WordGroup wordGroup, @PathVariable long id) {
 		WordGroup wordGroupToUpdate = wordGroupRepository.findOne(id);
 		wordGroupToUpdate.setName(wordGroup.getName());
+		wordGroupToUpdate.setLastUpdate(new Date());
 		wordGroupRepository.save(wordGroupToUpdate);
 		return "redirect:/admin/wordGroup/editlist";
 	}

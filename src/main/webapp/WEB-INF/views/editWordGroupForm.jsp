@@ -14,7 +14,7 @@
 	<form:form method="post" modelAttribute="wordGroup">
 		Name: <form:input path="name"/> &nbsp; &nbsp;
 	 Basic Group: <form:checkbox path="ifBasicGroup"/> &nbsp;
-		<input type="submit" value="add">
+		<input type="submit" value="edit">
 	</form:form>	
 </body>
 </html>

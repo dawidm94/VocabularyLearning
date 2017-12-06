@@ -10,7 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div align="center">
+<div class="containter">
+<div class="row">
+<div align="center" class="col">
 <br/>
 <h2>Profile details:</h2>
 <table class="profile">
@@ -24,18 +26,20 @@
 	<tr>
 		<td align="right"><strong>E-mail:</strong></td>
 		<td>${user.email}</td>
-		<td><a href="#" class="badge badge-primary">Change e-mail</a></td>
+		<td><a href="<c:url value="/profile/email"/>" class="badge badge-primary">Change e-mail</a></td>
 	</tr>
 	<tr>
 		<td align="right"><strong>Password:</strong></td>
 		<td>********</td>
-		<td><a href="#" class="badge badge-primary">Change password</a></td>
+		<td><a href="<c:url value="/profile/password"/>" class="badge badge-primary">Change password</a></td>
 	</tr>
 </table>
 </div>
 <br/><br/>
-<div align="center">
+<div align="center" class="col" style="border-left: 2px solid;">
+<br/>
 <h2 align="center">Your categories:</h2>
+<br/><br/>
 <table style="padding: 15px;" border="1">
 	<tr>
 		<th>Name</th>
@@ -49,6 +53,7 @@
 	</c:forEach>
 </table>
 </div>
-
+</div>
+</div>
 </body>
 </html>

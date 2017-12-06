@@ -1,5 +1,6 @@
-package pl.coderslab.models;
+package pl.coderslab.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,9 +19,10 @@ public class Probability {
 	private User user;
 	@ManyToOne
 	private Word word;
-	private int probability;
+	@Column(scale=2, precision=4)
+	private Double probability;
 
-	public Probability(User user, Word word, int probability) {
+	public Probability(User user, Word word, Double probability) {
 		this.user = user;
 		this.word = word;
 		this.probability = probability;
@@ -45,11 +47,11 @@ public class Probability {
 		this.word = word;
 	}
 
-	public int getProbability() {
+	public Double getProbability() {
 		return probability;
 	}
 
-	public void setProbability(int probability) {
+	public void setProbability(Double probability) {
 		this.probability = probability;
 	}
 

@@ -10,23 +10,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 align="center">Words by ${group.name}:</h1>
+<br/>
+	<h1 align="center">Test!!!! ${wordTestList[0].word.wordGroup.name}:</h1>
 	<br/>
 	<table id="random" align="center">
 		<tr>
 			<th>No.</th>
 			<th>PL</th>
 			<th>ENG</th>
+			<th>Powinno byc NULL</th>
 		</tr>
-		<c:forEach items="${words}" var="word" begin="0" varStatus="theCount">
+		<c:forEach items="${wordTestList}" var="wordTest" begin="0" varStatus="theCount">
 		<tr>
 			<td>${theCount.index+1}</td>
-			<td>${word.pl}</td>
-			<td>${word.eng}</td>
+			<td>${wordTest.word.pl}</td>
+			<td>${wordTest.word.eng}</td>
+			<td>${wordTest.answer}</td>
 		</tr>
 		</c:forEach>	
 	</table>
 	<br/>
-	<p align="center"><a href='<c:url value="/categories/user"/>' class="btn btn-primary">Back</a> <a href="#" class="btn btn-primary">Start test!</a></p>
+	<p align="center"><a href='.' class="btn btn-primary">Back</a></p>
 </body>
 </html>

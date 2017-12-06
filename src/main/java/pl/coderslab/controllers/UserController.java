@@ -1,4 +1,4 @@
-package pl.coderslab.models;
+package pl.coderslab.controllers;
 
 import java.util.List;
 
@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pl.coderslab.entities.Probability;
+import pl.coderslab.entities.User;
+import pl.coderslab.entities.Word;
 import pl.coderslab.repositories.ProbabilityRepository;
 import pl.coderslab.repositories.UserRepository;
 import pl.coderslab.repositories.WordRepository;
@@ -48,7 +51,7 @@ public class UserController {
 		userRepository.save(user);
 		List<Word> words = wordRepository.findAll();
 		for(Word word: words) {
-			Probability probability = new Probability(user, word, 1);
+			Probability probability = new Probability(user, word, 1.0);
 			probabilityRepository.save(probability);
 		}
 		

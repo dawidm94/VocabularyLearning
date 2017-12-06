@@ -1,5 +1,6 @@
-package pl.coderslab.models;
+package pl.coderslab.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pl.coderslab.entities.Probability;
+import pl.coderslab.entities.User;
+import pl.coderslab.entities.Word;
+import pl.coderslab.entities.WordGroup;
 import pl.coderslab.repositories.ProbabilityRepository;
 import pl.coderslab.repositories.UserRepository;
 import pl.coderslab.repositories.WordGroupRepository;
@@ -53,9 +58,11 @@ public class WordController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addWord(@ModelAttribute Word word, Model model) {
 		wordRepository.save(word);
+		word.getWordGroup().setLastUpdate(new Date());
+		wordGroupRepository.save(word.getWordGroup());
 		List<User> users = userRepository.findAll();
 		for( User user: users) {
-			Probability probability = new Probability(user, word, 1);
+			Probability probability = new Probability(user, word, 1.0);
 			probabilityRepository.save(probability);
 		}
 		model.addAttribute("addedWord", word);
@@ -79,6 +86,8 @@ public class WordController {
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
 	public String editWord(@ModelAttribute Word word, @PathVariable long id) {
 		Word wordToUpdate = wordRepository.findOne(id);
+		wordToUpdate.getWordGroup().setLastUpdate(new Date());
+		wordGroupRepository.save(wordToUpdate.getWordGroup());
 		wordToUpdate.setEng(word.getEng());
 		wordToUpdate.setPl(word.getPl());
 		wordToUpdate.setWordGroup(word.getWordGroup());

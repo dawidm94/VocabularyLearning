@@ -15,7 +15,7 @@
 		PL: <form:input path="pl"/>
 		ENG: <form:input path="eng"/>
 		Word Group: <form:select path="wordGroup" items="${groups}" itemValue="id" itemLabel="name"/>
-		<input type="submit">
+		<input type="submit" value="edit">
 	</form:form>
 </body>
 </html>

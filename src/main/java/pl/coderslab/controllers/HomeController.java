@@ -1,4 +1,4 @@
-package pl.coderslab.models;
+package pl.coderslab.controllers;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pl.coderslab.entities.User;
+import pl.coderslab.entities.Word;
 import pl.coderslab.repositories.UserRepository;
 import pl.coderslab.repositories.WordGroupRepository;
 import pl.coderslab.repositories.WordRepository;
@@ -81,14 +83,5 @@ public class HomeController {
 		model.addAttribute("randomWords",randomWords);
 		return "random10";
 	}
-	
-	@RequestMapping("/profile")
-	public String showProfile(HttpSession session, Model model) {
-		long userId = (Long) session.getAttribute("user_id");
-		User user = userRepository.findOne(userId);
-		List<WordGroup> userWordGroups = wordGroupRepository.findNoBasicWordGroupByUserId(userId);
-		model.addAttribute("user", user);
-		model.addAttribute("wordGroups", userWordGroups);
-		return "profile";
-	}
+
 }

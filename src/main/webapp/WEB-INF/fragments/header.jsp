@@ -8,24 +8,30 @@
 	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
 	crossorigin="anonymous">
 <header>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary navbar-fixed-top">
 		<span class="navbar-brand mb-0 h1"><a style="color:white; text-decoration: none;" href="<c:url value="/"/>"><strong>Vocabulary
 				Learning</strong></a></span>
-
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
+		<div class="collapse navbar-collapse" id="navbarNavDropdown" >
+			<ul class="navbar-nav mr-auto"> 
 				<li class="nav-item"><a class="nav-link" href="<c:url value="/categories"/>"><strong>Categories</strong></a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="<c:url value="/random"/>"><strong>Random 10</strong></a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="<c:url value="/"/>"><strong>Link</strong></a>
 				</li>
+				<li class="nav-item dropdown">
+		      	  <button class="dropbtn"><strong>Add</strong></button>
+					  <div class="dropdown-content">
+					    <a href="#">Add own category</a>
+					    <a href="#">Add word to your category</a>
+					  </div>
+		      </li>
 			</ul>
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link" href="<c:url value="/profile"/>"><strong>Profile</strong></a>
 				</li>
 
-				<%-- Check if admin --%>
+				<%-- Check if administrator --%>
 				<c:if test="${sessionScope.user_permission == 'admin'}">
 				<li class="nav-item"><a class="nav-link" href="<c:url value="/admin"/>"><strong>Admin</strong></a>
 				</li>
