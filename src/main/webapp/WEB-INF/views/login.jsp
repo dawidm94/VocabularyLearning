@@ -44,16 +44,20 @@
 <div class="container" >
     <div class="col-md-6" >
         <div id="logbox"  >
-            <form:form id="signup" method="post" action="/signup" modelAttribute="user">
+        <c:url var="addUrl" value="/admin/user/add"/>
+            <form:form id="signup" method="post" action="${addUrl}" modelAttribute="user">
                 <h1>Create an Account</h1>
-				<form:input path="login" placeholder="Email address" class="input pass"/>
-				<form:input path="email" placeholder="Login" class="input pass"/>
+				<form:input path="login" placeholder="Login" class="input pass"/>
+				<form:input path="email" placeholder="Email address" class="input pass"/>
                 <form:input path="password" type="password" placeholder="Choose a password" required="required" class="input pass"/>
                 <input name="user[password2]" type="password" placeholder="Confirm password" required="required" class="input pass"/>
                 <input type="submit" value="Sign me up!" class="inputButton"/>
             </form:form>
         </div>
     </div>
+        <div class="col-md-6" >
+        	<img src="<c:url value="/recources/img/login.png"/>" width="88%"height="88%">
+        </div>
 </div>
 </div>
 </body>

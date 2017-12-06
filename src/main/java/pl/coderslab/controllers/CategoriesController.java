@@ -93,8 +93,6 @@ public class CategoriesController {
 			for(double prob: probabilities) {
 				prob=Math.round(prob*100);
 				intProbabilities.add((int)prob);
-				System.out.println((int) prob);
-				System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 			}
 			//PK2 
 			while(testWords.size()<20) {
@@ -103,8 +101,6 @@ public class CategoriesController {
 					System.out.println("prob = " + prob);
 					probabilitiesSum+=prob;
 				}
-				System.out.println(probabilitiesSum);
-				System.out.println("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
 				//Number to picking word
 				int randNumber = random.nextInt(probabilitiesSum)+1;
 				// zmienna sprawdzajaca w ktorym przedziale znajduje sie randNumber
@@ -125,7 +121,7 @@ public class CategoriesController {
 		}/////////////////////////////////////////////////////////////
 		List<WordTest> wordTestList = new ArrayList<WordTest>();
 		for(Word word: testWords) {
-			wordTestList.add(new WordTest(word, null));
+			wordTestList.add(new WordTest(word, null,null));
 			
 		}
 		Collections.shuffle(wordTestList);
@@ -145,6 +141,7 @@ public class CategoriesController {
 		long userId = (Long) session.getAttribute("user_id");
 		Probability probability = probabilityRepository.findOneByUserIdAndWordId(userId, wordTestList.get(actuallQuestion).getWord().getId());
 		Double actuallProbability = probability.getProbability();
+		wordTestList.get(actuallQuestion).setUserAnswer(userAnswer);
 		if(correctAnswer.toLowerCase().equals(userAnswer.toLowerCase())){
 			wordTestList.get(actuallQuestion).setAnswer(true);
 			probability.setProbability(actuallProbability*0.6);
@@ -161,6 +158,5 @@ public class CategoriesController {
 			session.setAttribute("actuallQuestion", actuallQuestion);
 			return "test2";
 		}
-
 	}
 }

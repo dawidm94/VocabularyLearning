@@ -82,6 +82,30 @@ table#categories
 .profile td{
 	padding: 20px
 }
+
+/* RESULT TEST TABLE */
+
+#result {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 40%;
+    font-weight: bold;
+}
+
+#result td, #result th {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    padding: 8px;
+}
+
+#result th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #428BCA;
+    color: white;
+}
+
 /* DROPDOWN MENU*/
 .dropbtn {
     background-color: #007bff;

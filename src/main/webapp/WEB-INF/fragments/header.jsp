@@ -17,13 +17,11 @@
 				</li>
 				<li class="nav-item"><a class="nav-link" href="<c:url value="/random"/>"><strong>Random 10</strong></a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="<c:url value="/"/>"><strong>Link</strong></a>
-				</li>
 				<li class="nav-item dropdown">
 		      	  <button class="dropbtn"><strong>Add</strong></button>
 					  <div class="dropdown-content">
-					    <a href="#">Add own category</a>
-					    <a href="#">Add word to your category</a>
+					    <a href="<c:url value="/add_category"/>">Add own category</a>
+					    <a href="<c:url value="/add_word"/>">Add word to your category</a>
 					  </div>
 		      </li>
 			</ul>

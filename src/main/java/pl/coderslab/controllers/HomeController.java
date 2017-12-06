@@ -31,13 +31,6 @@ public class HomeController {
 	@Autowired
 	WordGroupRepository wordGroupRepository;
 	
-	@RequestMapping("/test")
-	public String hello(Model model) {
-		User user = new User();
-		model.addAttribute("user",user);
-		return "login";
-	}
-	
 	@RequestMapping("/")
 	public String loginRegister(HttpSession session, Model model) {
 		if(session.getAttribute("user_id")!=null) {
@@ -45,7 +38,7 @@ public class HomeController {
 		}else {
 			User user = new User();
 			model.addAttribute("user",user);
-			return "loginRegister";
+			return "login";
 		}
 	}
 	
