@@ -105,6 +105,50 @@ table#categories
     background-color: #428BCA;
     color: white;
 }
+/* HISTORY TABLE */
+
+#history {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+}
+
+#history td, #history th {
+    border: 1px solid #ddd;
+    padding: 8px;
+	text-align: center;
+}
+
+
+#history th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #428BCA;
+    color: white;
+}
+
+/* USER WORD EDIT TABLE */
+
+#wordedit {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+    font-weight: bold;
+}
+
+#wordedit td, #wordedit th {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    padding: 8px;
+}
+
+#wordedit th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #428BCA;
+    color: white;
+}
 
 /* DROPDOWN MENU*/
 .dropbtn {

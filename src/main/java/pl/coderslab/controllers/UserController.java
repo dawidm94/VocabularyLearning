@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.coderslab.entities.Probability;
 import pl.coderslab.entities.User;
@@ -62,7 +63,7 @@ public class UserController {
 			return "addUserForm";
 		}else {
 			session.setAttribute("user_id", user.getId());
-			session.setAttribute("user_permission", user.getPermission());
+			session.setAttribute("user_permission", "user");
 			String message = "Witaj " + user.getLogin() + "! Twoja rejestracja przebiegła pomyślnie.";
 			model.addAttribute("message", message);
 			return "index";
@@ -82,9 +83,10 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-	public String editUser(@ModelAttribute User user, @PathVariable long id) {
+	public String editUser(@ModelAttribute User user, @PathVariable long id, @RequestParam String permission) {
 		User userToUpdate = userRepository.findOne(id);
 		userToUpdate.setLogin(user.getLogin());
+		userToUpdate.setPermission(permission);
 		userToUpdate.setPassword(user.getPassword());
 		userToUpdate.setEmail(user.getEmail());
 		userRepository.save(userToUpdate);

@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Vocabulary learning by Dawid Marcinkow</title>
 </head>
 <body>
 	<br/>
@@ -17,12 +17,12 @@
 		<h1 style="color:green;"><strong>KONIEC TESTU</strong></h1>
 		<c:set var="count" value="0" scope="page" />
 		<c:forEach items="${sessionScope.testList}" var="wordTest">
-			<c:if test="${wordTest.answer==true}">
+			<c:if test="${wordTest.word.eng==wordTest.userAnswer}">
 				<c:set var="count" value="${count + 1}" scope="page"/>
 			</c:if>
 		</c:forEach>
 		<h3>Wynik testu: ${count} / ${fn:length(sessionScope.testList)}</h3>
-		<h3>Poprawnych odpowiedzi: <fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${count/fn:length(sessionScope.testList)}" /></h3>
+		<h3>Poprawnych odpowiedzi: <span style="font-weight: bold;color:purple;"><fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${count/fn:length(sessionScope.testList)}" /></span></h3>
 	</div>
 	<br/><br/>
 	<div align="center">
@@ -42,7 +42,7 @@
   		<td><p>${theCount.index+1}</p></td>
   		<td><p>${word.word.pl}</p></td>
   		<c:choose>
-  			<c:when test="${word.answer==true}">
+  			<c:when test="${word.word.eng==word.userAnswer}">
   				<td><p style="color:green;">${word.word.eng}</p></td>
   			</c:when>
   			<c:otherwise>

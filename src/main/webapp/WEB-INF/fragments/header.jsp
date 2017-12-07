@@ -15,17 +15,19 @@
 			<ul class="navbar-nav mr-auto"> 
 				<li class="nav-item"><a class="nav-link" href="<c:url value="/categories"/>"><strong>Categories</strong></a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="<c:url value="/random"/>"><strong>Random 10</strong></a>
+				<li class="nav-item"><a class="nav-link" href="<c:url value="/random"/>"><strong>Random 20</strong></a>
 				</li>
 				<li class="nav-item dropdown">
 		      	  <button class="dropbtn"><strong>Add</strong></button>
 					  <div class="dropdown-content">
-					    <a href="<c:url value="/add_category"/>">Add own category</a>
+					    <a href="<c:url value="/add_category"/>">Add new category</a>
 					    <a href="<c:url value="/add_word"/>">Add word to your category</a>
 					  </div>
 		      </li>
 			</ul>
 			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="<c:url value="/my_categories"/>"><strong>My categories</strong></a>
+				</li>
 				<li class="nav-item"><a class="nav-link" href="<c:url value="/profile"/>"><strong>Profile</strong></a>
 				</li>
 

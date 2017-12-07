@@ -11,8 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -22,14 +24,21 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(unique = true)
+	@NotBlank
+	@Size(min=4,max=20)
 	private String login;
+	@NotBlank
 	private String password;
 	@Column(unique = true)
+	@Email
+	@NotBlank
 	private String email;
 	@OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)
 	private List<Probability> probabilities= new ArrayList<Probability>();
 	@OneToMany(mappedBy = "user")
 	private List<WordGroup> wordGroups = new ArrayList<WordGroup>();
+	@OneToMany(mappedBy = "user")
+	private List<History> histories = new ArrayList<History>();
 	private String permission;
 
 	public User(String login, String password, String email) {

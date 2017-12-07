@@ -1,11 +1,13 @@
 package pl.coderslab.models;
 
+import java.io.Serializable;
+
 import pl.coderslab.entities.Word;
 
-public class WordTest {
+@SuppressWarnings("serial")
+public class WordTest implements Serializable {
 
 	private Word word;
-	private Boolean answer;
 	private String userAnswer;
 
 	public Word getWord() {
@@ -14,12 +16,6 @@ public class WordTest {
 	public void setWord(Word word) {
 		this.word = word;
 	}
-	public Boolean getAnswer() {
-		return answer;
-	}
-	public void setAnswer(Boolean answer) {
-		this.answer = answer;
-	}
 	
 	public String getUserAnswer() {
 		return userAnswer;
@@ -27,9 +23,8 @@ public class WordTest {
 	public void setUserAnswer(String userAnswer) {
 		this.userAnswer = userAnswer;
 	}
-	public WordTest(Word word, Boolean answer, String userAnswer) {
+	public WordTest(Word word, String userAnswer) {
 		this.word = word;
-		this.answer = answer;
 		this.userAnswer = userAnswer;
 	}
 	

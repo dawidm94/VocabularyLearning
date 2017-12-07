@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Users categories</title>
+<title>Vocabulary learning by Dawid Marcinkow</title>
 </head>
 <body>
 	<table class="table table-sm table-bordered">

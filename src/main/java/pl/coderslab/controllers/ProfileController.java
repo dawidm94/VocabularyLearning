@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pl.coderslab.entities.History;
 import pl.coderslab.entities.User;
 import pl.coderslab.entities.WordGroup;
+import pl.coderslab.repositories.HistoryRepository;
 import pl.coderslab.repositories.UserRepository;
 import pl.coderslab.repositories.WordGroupRepository;
 import pl.coderslab.repositories.WordRepository;
@@ -29,15 +31,15 @@ public class ProfileController {
 	WordRepository wordRepository;
 	
 	@Autowired
-	WordGroupRepository wordGroupRepository;
+	HistoryRepository historyRepository;
 	
 	@RequestMapping("")
 	public String showProfile(HttpSession session, Model model) {
 		long userId = (Long) session.getAttribute("user_id");
 		User user = userRepository.findOne(userId);
-		List<WordGroup> userWordGroups = wordGroupRepository.findNoBasicWordGroupByUserId(userId);
+		List<History> history = historyRepository.findLast10ByUserId(userId);
 		model.addAttribute("user", user);
-		model.addAttribute("wordGroups", userWordGroups);
+		model.addAttribute("history", history);
 		return "profile";
 	}
 	

@@ -36,6 +36,8 @@ public class WordGroup {
 	@Column
 	@Type(type="timestamp")
 	private Date lastUpdate;
+	@OneToMany(mappedBy = "wordGroup")
+	private List<History> histories = new ArrayList<History>();
 
 	public User getUser() {
 		return user;

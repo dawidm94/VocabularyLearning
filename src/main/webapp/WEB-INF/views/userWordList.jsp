@@ -11,30 +11,32 @@
 <title>Vocabulary learning by Dawid Marcinkow</title>
 </head>
 <body>
-<h1 align="center"><strong>Add words</strong></h1>
+<h1 align="center"><strong>Category: ${wg.name}</strong></h1>
 <hr>
 <div align="center">
-<form:form method="post" modelAttribute="word">
-	PL: <form:input autofocus="autofocus" path="pl"/>
-	ENG: <form:input path="eng"/>
-	<input type="submit">
-</form:form>
-<hr>
 </div>
 	<br/>
-		<table id="random" align="center">
+		<table id="wordedit" align="center">
 		<tr>
-			<th>No.</th>
-			<th>PL</th>
-			<th>ENG</th>
+			<th width="10%">No.</th>
+			<th width="30%">PL</th>
+			<th width="30%">ENG</th>
+			<th width="15%"></th>
+			<th width="15%"></th>
 		</tr>
 		<c:forEach items="${group}" var="word"  varStatus="theCount">
 			<tr>
 				<td>${theCount.index+1}</td>
 				<td>${word.pl}</td>
 				<td>${word.eng}</td>
+				<td><a style="width: 120px;height: 20px;" href="<c:url value="/my_categories/${wg.id}/edit/${word.id}"/>" class="badge badge-primary">Edit </a></td>
+				<td><a style="width: 120px;height: 20px;" href="<c:url value="/my_categories/${wg.id}/delete/${word.id}"/>" class="badge badge-danger">Delete </a></td>
 			</tr>
 		</c:forEach>
 		</table>
+		<br/><br/><div align="center">
+		<span><a href='<c:url value="/my_categories"/>' class="btn btn-primary">Back </a></span>
+		<span><a href='<c:url value="/add_word/${wg.id}"/>' class="btn btn-success"> Add words</a></span>
+		</div>
 </body>
 </html>

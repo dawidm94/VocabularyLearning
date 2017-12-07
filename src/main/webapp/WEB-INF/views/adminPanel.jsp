@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Vocabulary learning by Dawid Marcinkow</title>
 </head>
 <body>
 	<table class="table">

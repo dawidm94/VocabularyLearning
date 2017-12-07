@@ -2,6 +2,7 @@ package pl.coderslab.controllers;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -15,11 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pl.coderslab.entities.History;
 import pl.coderslab.entities.Probability;
+import pl.coderslab.entities.User;
 import pl.coderslab.entities.Word;
 import pl.coderslab.entities.WordGroup;
 import pl.coderslab.models.WordTest;
+import pl.coderslab.repositories.HistoryRepository;
 import pl.coderslab.repositories.ProbabilityRepository;
+import pl.coderslab.repositories.UserRepository;
 import pl.coderslab.repositories.WordGroupRepository;
 import pl.coderslab.repositories.WordRepository;
 
@@ -35,6 +40,12 @@ public class CategoriesController {
 	
 	@Autowired
 	ProbabilityRepository probabilityRepository;
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	@Autowired
+	HistoryRepository historyRepository;
 	
 	@RequestMapping("")
 	public String selectTypeofCategory() {
@@ -121,14 +132,14 @@ public class CategoriesController {
 		}/////////////////////////////////////////////////////////////
 		List<WordTest> wordTestList = new ArrayList<WordTest>();
 		for(Word word: testWords) {
-			wordTestList.add(new WordTest(word, null,null));
+			wordTestList.add(new WordTest(word, null));
 			
 		}
 		Collections.shuffle(wordTestList);
 		session.setAttribute("testList", wordTestList);
 		session.setAttribute("actuallQuestion", 0);
 		
-		return "test2";
+		return "test";
 	}
 	
 	@RequestMapping(value= {"/user/{id}/test","/basic/{id}/test"}, method = RequestMethod.POST)
@@ -141,22 +152,35 @@ public class CategoriesController {
 		long userId = (Long) session.getAttribute("user_id");
 		Probability probability = probabilityRepository.findOneByUserIdAndWordId(userId, wordTestList.get(actuallQuestion).getWord().getId());
 		Double actuallProbability = probability.getProbability();
+		
 		wordTestList.get(actuallQuestion).setUserAnswer(userAnswer);
+		
 		if(correctAnswer.toLowerCase().equals(userAnswer.toLowerCase())){
-			wordTestList.get(actuallQuestion).setAnswer(true);
 			probability.setProbability(actuallProbability*0.6);
 		}else {
-			wordTestList.get(actuallQuestion).setAnswer(false);
 			probability.setProbability(actuallProbability*2);
 		}
+		
 		probabilityRepository.save(probability);
 		actuallQuestion++;
+		
 		if(wordTestList.size()<=actuallQuestion) {
+			User user = userRepository.findOne(userId);
+			WordGroup wg = wordGroupRepository.findOne(id);
+			int correctAnswers = 0;
+			for(WordTest wt: wordTestList) {
+				if(wt.getUserAnswer().equals(wt.getWord().getEng())) {
+					correctAnswers++;
+				}
+			}
+			int percentageOfCorrectAnswers = Math.round((float)correctAnswers*100/(float)wordTestList.size());
+			History history = new History(user, wg, percentageOfCorrectAnswers, new Date());
 			session.removeAttribute("actuallQuestion");
+			historyRepository.save(history);
 			return "testResult";
 		}else {
 			session.setAttribute("actuallQuestion", actuallQuestion);
-			return "test2";
+			return "test";
 		}
 	}
 }

@@ -8,13 +8,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Vocabulary learning by Dawid Marcinkow</title>
 </head>
 <body>
 	<form:form method="post" modelAttribute="word">
 		PL: <form:input path="pl"/>
 		ENG: <form:input path="eng"/>
-		Word Group: <form:select path="wordGroup" items="${groups}" itemValue="id" itemLabel="name"/>
+		Word Group: (actual: ${word.wordGroup.name}) <form:select path="wordGroup" items="${groups}" itemValue="id" itemLabel="name"/>
 		<input type="submit" value="edit">
 	</form:form>
 </body>

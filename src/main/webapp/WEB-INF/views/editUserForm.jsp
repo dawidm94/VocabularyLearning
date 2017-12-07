@@ -8,13 +8,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Vocabulary learning by Dawid Marcinkow</title>
 </head>
 <body>
 	<form:form method="post" modelAttribute="user">
 		Login: <form:input path="login"/>
 		Password: <form:input path="password"/>
 		E-mail: <form:input path="email"/>
+		Permission: <select name="permission">
+						<option>user</option>
+						<option>admin</option>
+					</select>
 		<input type="submit" value="edit">	
 	</form:form>
 </body>
