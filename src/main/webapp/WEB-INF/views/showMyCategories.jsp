@@ -24,7 +24,7 @@
 	<tr>
 		<td></td>
 		<td>${theCount.index+1}</td>
-		<td>${group.name}</td>
+		<td><a style="blue" href="<c:url value="/categories/user/${group.id}"/>">${group.name}</a></td>
 		<td><a style="width: 120px;height: 20px;" href="<c:url value="/my_categories/${group.id}"/>" class="badge badge-warning">Edit/Delete word	</a>
 			<a style="width: 120px;height: 20px;" href="<c:url value="/my_categories/edit/${group.id}"/>" class="badge badge-primary">Edit name	</a>
 			<a style="width: 120px;height: 20px;" href="<c:url value="/my_categories/delete/${group.id}"/>" class="badge badge-danger">Delete </a>

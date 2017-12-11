@@ -60,12 +60,12 @@
             <form:form id="signup" method="post" role="form" action="${addUrl}" modelAttribute="user">
                 <h1>Create an Account</h1>
 				<form:input path="login" id="loginForm" placeholder="Login" required="required" class="input pass"/>
-				<form:errors path="login"/>
+				<form:errors path="login" cssClass="error" />
 				<form:input path="email" id="emailForm" placeholder="Email address" required="required" class="input pass"/>
-                <form:errors path="email"/>
+                <form:errors path="email" cssClass="error"/>
                 <form:input path="password" id="password" type="password" placeholder="Choose a password" required="required" class="input pass"/>
-               <form:errors path="password"/>
-                <input name="user[password2]" id="confirmPassword" type="password" placeholder="Confirm password" required="required" class="input pass"/>
+               <form:errors path="password" cssClass="error"/>
+                <input name="userpw2" id="confirmPassword" type="password" placeholder="Confirm password" required="required" class="input pass"/>
                 <input type="submit" value="Sign me up!" class="inputButton" id="signUpButton"/>    
             </form:form>
         </div>

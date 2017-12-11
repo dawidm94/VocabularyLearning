@@ -90,6 +90,8 @@ public class HomeController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String addUser(@Valid User user, BindingResult result, Model model, HttpSession session) {
 		
+		
+		
 		if(result.hasErrors()) {
 			return "login";
 		}
