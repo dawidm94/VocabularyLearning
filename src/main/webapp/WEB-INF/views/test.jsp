@@ -21,7 +21,7 @@
 			<c:if test="${wordTest.word.eng==wordTest.userAnswer}">
 				<span style="color: green;">&#10004;</span>
 			</c:if>
-			<c:if test="${(wordTest.word.eng!=wordTest.userAnswer) && not empty wordTest.userAnswer}">
+			<c:if test="${(wordTest.word.eng!=wordTest.userAnswer) && sessionScope.actuallQuestion>theCount.index}">
 				<span style="color: red;">&#10006;</span> 
 			</c:if>
 		</li>
